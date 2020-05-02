@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'dev') {
     urlDB = 'mongodb://localhost:27017/actitud';
 } else {
 
-    urlDB = process.env.MONGO_URL;
+    urlDB = 'mongodb+srv://catomas:trucha1998@cluster0-ximi4.mongodb.net/test?retryWrites=true&w=majority';L;
 }
 
 process.env.URLDB = urlDB;
