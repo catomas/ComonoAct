@@ -1,4 +1,4 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 
 
 class App extends Component {
@@ -11,7 +11,8 @@ class App extends Component {
             age: '',
             sport: '',
             users: [],
-            _id: ''
+            _id: '',
+            date: new Date()
             
         };
         this.addUser = this.addUser.bind(this);
@@ -19,7 +20,8 @@ class App extends Component {
     }
 
 
-    addUser(e) {    
+    addUser(e) {
+        console.log(this.state);    
         if(this.state._id){
             fetch(`/user/${this.state._id}`,{        
                 method:'PUT',
@@ -33,7 +35,7 @@ class App extends Component {
             .then(data => {
                 console.log(data)
                 M.toast({html: "User Uploded"})
-                this.setState({name: '', lastName: '', age: '', sport: '', _id: ''})
+                this.setState({name: '', lastName: '', date: new Date(), sport: '', _id: ''})
                 this.fetchUsers();
                 
             })
@@ -53,7 +55,7 @@ class App extends Component {
             .then(data => {
                 console.log(data);
                 M.toast({html: 'User Saved'})
-                this.setState({name: '', lastName: '', age: '', sport: ''})
+                this.setState({name: '', lastName: '', date: new Date() , sport: ''})
                 this.fetchUsers();
             })
             .catch(err => console.log(err));
@@ -107,15 +109,21 @@ class App extends Component {
             .then(res => res.json())
             .then(data => {
                 let users = data.usuarioDB
-                console.log(users)
+                let dateR = new Date(users.date)
+                let y = dateR.getFullYear()
+                let m = dateR.getMonth()
+                let d = dateR.getDay()
+
+                let dateF = `${y}/${m}/${d}`
                 this.setState({
                     name: users.name,
                     lastName: users.lastName,
-                    age: users.age,
+                    date: dateR,
                     sport: users.sport,
                     _id: users._id
 
                 })
+                console.log(dateF);
             })
     }
     handleChange(e){
@@ -144,22 +152,26 @@ class App extends Component {
                                     <form onSubmit= {this.addUser}>
                                         <div className="row">
                                             <div className= "input-field col s12">
-                                               <input name="name"  onChange={this.handleChange} type="text" placeholder="Name" value={this.state.name}/> 
+                                               <input name="name"   onChange={this.handleChange} type="text" placeholder="Juan" value={this.state.name} required/> 
+                                               <label htmlFor="birthday">Name</label>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className= "input-field col s12">
-                                               <input name="lastName" onChange={this.handleChange} type="text" placeholder="Last Name" value={this.state.lastName}/> 
+                                               <input name="lastName" onChange={this.handleChange} type="text" placeholder="Echeverri" value={this.state.lastName} required/> 
+                                               <label htmlFor="birthday">Last Name</label>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className= "input-field col s12">
-                                               <input name="age" onChange={this.handleChange} type="number" placeholder="Age" value={this.state.age}/> 
+                                               <input name="date" onChange={this.handleChange}  type="date"  placeholder="Age" value={this.state.date} required/> 
+                                               <label htmlFor="birthday">Birthday</label>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className= "input-field col s12">
-                                               <input name="sport" onChange={this.handleChange} type="text" placeholder="Sport" value={this.state.sport}/> 
+                                               <input name="sport" onChange={this.handleChange} type="text" placeholder="Hockey" value={this.state.sport} required/> 
+                                               <label htmlFor="birthday">Sport</label>
                                             </div>
                                         </div>
                                         <button type="submit" className="#004d40 btn teal darken-4">

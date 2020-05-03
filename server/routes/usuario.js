@@ -7,16 +7,25 @@ const Usuario = require('../models/usuario');
 
 const app = express();
 
+function convertir(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 
+function calculate_age(dob) {
+    var diff_ms = Date.now() - dob.getTime();
+    var age_dt = new Date(diff_ms);
+
+    return Math.abs(age_dt.getUTCFullYear() - 1970);
+}
 
 app.get('/user', (req, res) => {
 
 
-    
+
     let sort = req.query.sort || 'name';
 
-    
+
 
     Usuario.find()
         .sort(sort)
@@ -40,22 +49,22 @@ app.get('/user', (req, res) => {
         });
 });
 
-app.get('/user/:id', (req,res) => {
+app.get('/user/:id', (req, res) => {
 
     let id = req.params.id;
     Usuario.findById(id, (err, usuarioDB) => {
         if (err) {
 
-          return res.status(400).json({
-                    ok: false,
-                    err
-                });
-            }
-
-
-            res.json({
-                usuarioDB
+            return res.status(400).json({
+                ok: false,
+                err
             });
+        }
+
+
+        res.json({
+            usuarioDB
+        });
     })
 
 })
@@ -65,11 +74,17 @@ app.post('/user', (req, res) => {
 
     let body = req.body;
 
+    let birthad = new Date(body.date);
+
+    let ageR = calculate_age(birthad);
+
+
     let usuario = new Usuario({
-        name: body.name,
-        lastName: body.lastName,
-        age: body.age,
-        sport: body.sport
+        name: convertir(body.name),
+        lastName: convertir(body.lastName),
+        age: ageR,
+        sport: convertir(body.sport),
+        date: body.date
     });
 
     usuario.save((err, usuarioDB) => {
@@ -84,18 +99,50 @@ app.post('/user', (req, res) => {
 
         res.json({
             ok: true,
-            usuario: usuarioDB
+            usuario: usuarioDB,
         });
     });
-    
+
 });
 
-app.put('/user/:id',  (req, res)=> {
+app.put('/user/:id', (req, res) => {
 
-    let id = req.params.id;
     let body = req.body;
 
-     Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
+    let birthad = new Date(body.date);
+
+    let ageR = calculate_age(birthad);
+    let id = req.params.id;
+
+    let usuario = new Usuario({
+        name: convertir(body.name),
+        lastName: convertir(body.lastName),
+        age: ageR,
+        sport: convertir(body.sport),
+        date: body.date
+    });
+
+    Usuario.findByIdAndDelete(id, (err, usuarioBorrado) => {
+
+        if (err) {
+
+            return res.status(400).json({
+                ok: false,
+                err
+            });
+        };
+
+        if (!usuarioBorrado) {
+
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    message: 'Usuario no encontrado'
+                }
+            });
+        };
+    })
+    usuario.save((err, usuarioDB) => {
 
         if (err) {
 
@@ -107,11 +154,10 @@ app.put('/user/:id',  (req, res)=> {
 
         res.json({
             ok: true,
-            usuario: usuarioDB
+            usuario: usuarioDB,
         });
+    });
 
-
-    })
 
 });
 

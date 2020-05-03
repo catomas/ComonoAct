@@ -23,6 +23,12 @@ let usuarioSchema = new Schema({
     sport: {
         type: String,
         required: [true, 'El deporte es necesario']
+    },
+    
+    date: {
+        type: Date,
+        required: false
+        
     }
 
 
