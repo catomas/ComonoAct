@@ -118,7 +118,7 @@ class App extends Component {
                 this.setState({
                     name: users.name,
                     lastName: users.lastName,
-                    date: dateR,
+                    date: dateF,
                     sport: users.sport,
                     _id: users._id
 
@@ -164,7 +164,7 @@ class App extends Component {
                                         </div>
                                         <div className="row">
                                             <div className= "input-field col s12">
-                                               <input name="date" onChange={this.handleChange}  type="date"  placeholder="Age" value={this.state.date} required/> 
+                                               <input name="date" onChange={this.handleChange}  type="date" min="1920-01-01" max="2019-12-31" placeholder="Age" value={this.state.date} required/> 
                                                <label htmlFor="birthday">Birthday</label>
                                             </div>
                                         </div>
