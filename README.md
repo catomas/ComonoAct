@@ -24,7 +24,7 @@ In React, ~~create a small app that render in a table the data provided in the f
 | Security | Los base de datos debe de estar protegida |
 | Desing | La interfaz amigable e intuitiba con el usuario, con alertas|  
 
-## Desing
+## Design
 ![Disenio](https://github.com/catomas/ComonoAct/blob/master/diagrama/diagrama.jpg) 
 
 ## Tecnologias de Desarollo
@@ -45,7 +45,7 @@ In React, ~~create a small app that render in a table the data provided in the f
 
 https://documenter.getpostman.com/view/6633944/Szmb6zmJ?version=latest
 
-## Ejecucion
+## Ejecution
 
 
 ```
