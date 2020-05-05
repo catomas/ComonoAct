@@ -152,25 +152,25 @@ class App extends Component {
                                     <form onSubmit= {this.addUser}>
                                         <div className="row">
                                             <div className= "input-field col s12">
-                                               <input name="name"   onChange={this.handleChange} type="text" placeholder="Juan" value={this.state.name} required/> 
+                                               <input name="name"   onChange={this.handleChange} type="text"  maxLength="12" pattern="[A-Za-z]{0,}" title="Only letters" placeholder="Juan" value={this.state.name} required/> 
                                                <label htmlFor="birthday">Name</label>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className= "input-field col s12">
-                                               <input name="lastName" onChange={this.handleChange} type="text" placeholder="Echeverri" value={this.state.lastName} required/> 
+                                               <input name="lastName" onChange={this.handleChange} type="text" maxLength="12" pattern="[A-Za-z]{0,}" title="Only letters" placeholder="Echeverri" value={this.state.lastName} required/> 
                                                <label htmlFor="birthday">Last Name</label>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className= "input-field col s12">
-                                               <input name="date" onChange={this.handleChange}  type="date" min="1920-01-01" max="2019-12-31" placeholder="Age" value={this.state.date} required/> 
+                                               <input name="date" onChange={this.handleChange}  type="date" min="1920-01-01" max="2019-12-31"  placeholder="Age" value={this.state.date} required/> 
                                                <label htmlFor="birthday">Birthday</label>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className= "input-field col s12">
-                                               <input name="sport" onChange={this.handleChange} type="text" placeholder="Hockey" value={this.state.sport} required/> 
+                                               <input name="sport" onChange={this.handleChange} type="text" maxLength="10" pattern="[A-Za-z]{0,}" title="Only letters" placeholder="Hockey" value={this.state.sport} required/> 
                                                <label htmlFor="birthday">Sport</label>
                                             </div>
                                         </div>
@@ -181,7 +181,7 @@ class App extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col s7">
+                        <div className="col s9">
                             <table className="striped" >
                                 <thead>
                                     <tr>
