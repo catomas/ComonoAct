@@ -16,7 +16,7 @@ In React, ~~create a small app that renders in a table the data provided in the 
 
 
 ## Non functional requirements
-| QA | Descripción | Description |
+| QA |  Description |
 | --- | --- |
 | Availability | Scalability |
 | Performance | Response time less than 1 second |
