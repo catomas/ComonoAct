@@ -2,44 +2,42 @@
 
 ## Problem 
 
-In React, ~~create a small app that render in a table the data provided in the file "subscribers.json"~~ , crear una aplicación que rendirice los usuarios almacenados en una base datos, que añada usuarios directamente desde la interfaz, tambien que pueda eliminarlos y editarlos, al ordenar los datos se deben hacer por tres categorias __*name*__, __*age*__ and __*sport*__ 
+In React, ~~create a small app that renders in a table the data provided in the file "subscribers.json"~~ , create an app that renders the stored users in a data base, that add new users directly from the frontend, and also capable of delete them and edit them. For organizing the data, it should be organized in three categories __*name*__, __*age*__ and __*sport*__ 
 
 
-## Requisitos funcionales
-
+## Functional requirements
 | Numeral | Description |
 | --- | --- |
-| 1 | El sistema debe permitir organizar los usuarios|
-| 2 | El sistema debe permitir agregar, editar y eliminar  usuarios|
-| 3 | El sistema no puede permitir que los usuarios dejen los campos incompletos|
-| 4 | Se tiene que mostrar renderizada la tabla de los usuarios y ordenada|
+| 1 |  The system should allow to organize the users. |
+| 2 |  The system should allow to add, edit, and delete the users. |
+| 3 |  The system should not allow the users to leave blank spaces. |
+| 4 |  The users table should be shown rendered and organized. |
  
 
-## Requisitos no funcionales
 
-| QA | Descripción |
+## Non functional requirements
+| QA | Descripción | Description |
 | --- | --- |
-| Availability | Escalabilidad |
-| Performance | Tiempos de respuesta menor a 1 segundo |
-| Security | Los base de datos debe de estar protegida |
-| Desing | La interfaz amigable e intuitiba con el usuario, con alertas|  
+| Availability | Scalability |
+| Performance | Response time less than 1 second |
+| Security | The data base must be protected |
+| Design | The interface should be friendly and intuitive with the user, including alerts. |
 
 ## Design
 ![Disenio](https://github.com/catomas/ComonoAct/blob/master/diagrama/diagrama.jpg) 
 
-## Tecnologias de Desarollo
-
-| Tecnologia | Descripción |
+## Development technologies
+| Technology | Description| 
 | --- | --- |
 | NodeJS | BackEnd |
-| Express | ServidorRest|
-| MongoDb | Base de datos |
+| Express | ApiRest| 
+| MongoDb | Data base|
 | React   | FrontEnd |
 | WebPack | Bundler |
 | BabelRc | JSX to JS|
 | MongoDBAtlas | Global Cloud DB|
 | Materialize | framework CSS |
-| Heroku | Despliegue  |
+| Heroku | Deployment |
 
 ## Documentation API Rest
 
